@@ -1,0 +1,23 @@
+﻿@model Etch.OrchardCore.OutputCache.ViewModels.OutputCacheSettingsViewModel
+
+<p class="alert alert-warning">
+    @T["The current tenant will be reloaded when the settings are saved."]
+</p>
+
+<div class="mb-3">
+    <label asp-for="Expiration">@T["Expiration"]</label>
+    <input asp-for="Expiration" class="form-control" />
+    <span class="hint">@T["Number of minutes until a cache entry is expired."]</span>
+</div>
+
+<div class="mb-3">
+    <label asp-for="Tag">@T["Tag"]</label>
+    <input asp-for="Tag" class="form-control" />
+    <span class="hint">@T["Tag used when storing items in cache store."]</span>
+</div>
+
+<div class="mb-3">
+    <label asp-for="VaryByQueryStrings">@T["Vary by query strings"]</label>
+    <input asp-for="VaryByQueryStrings" class="form-control" />
+    <span class="hint">@T["Comma separated query string parameters that vary the output cache entries."]</span>
+</div>

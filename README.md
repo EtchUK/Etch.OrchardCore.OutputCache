@@ -22,6 +22,10 @@ First step is to enable "Output caching" within the features section of the admi
 
 **Known issue is that output caching will not work when the Forms module is enabled.**
 
+### Configuration
+
+By default entries added to Output Cache will expire after 10 minutes. This can be changed via the admin area by selecting "Configuration" then "Output Cache" in the admin menu. Within the settings view the expiration length can be configured and will cause the tenant to be reoloaded once the settings have been saved. From the settings the tag associated to entries can be managed as well as specifying which query strings should be a variation on the cache entry.
+
 ## Packaging
 
 When the module is compiled (using `dotnet build`) it's configured to generate a `.nupkg` file (this can be found in `\bin\Debug\` or `\bin\Release`).

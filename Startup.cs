@@ -1,7 +1,13 @@
+using Etch.OrchardCore.OutputCache.Drivers;
+using Etch.OrchardCore.OutputCache.Settings;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection;
+using OrchardCore.DisplayManagement.Handlers;
+using OrchardCore.Entities;
 using OrchardCore.Modules;
+using OrchardCore.Navigation;
+using OrchardCore.Settings;
 using System;
 
 namespace Etch.OrchardCore.OutputCache
@@ -10,12 +16,25 @@ namespace Etch.OrchardCore.OutputCache
     {
         public override void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<IDisplayDriver<ISite>, OutputCacheSettingsDisplayDriver>();
+
+            services.AddScoped<INavigationProvider, AdminMenu>();
+
             services.AddOutputCache(options =>
             {
-                options.DefaultExpirationTimeSpan = new TimeSpan(0, 10, 0);
+                var siteService = services.BuildServiceProvider().GetService<ISiteService>();
+                var settings = siteService.GetSiteSettingsAsync().Result.As<OutputCacheSettings>();
 
-                // Create a new policy that will contain the DefaultPolicy and enable all endpoints (GET, un-authenticated)
-                options.AddBasePolicy(build => { });
+                options.DefaultExpirationTimeSpan = new TimeSpan(0, settings.Expiration, 0);
+
+                options.AddBasePolicy(build => {
+                    build.Tag(settings.Tag);
+
+                    if (settings.VaryByQueryStrings != null)
+                    {
+                        build.VaryByQuery(settings.VaryByQueryStrings);
+                    }
+                });
             });
         }
 
