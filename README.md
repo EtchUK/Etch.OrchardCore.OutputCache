@@ -1,10 +1,10 @@
 # Etch.OrchardCore.OutputCache
 
-Provides Output caching for Orchard Core.
+Orchard Core module that provides caching using [Output Cache](https://learn.microsoft.com/en-us/aspnet/core/performance/caching/overview?view=aspnetcore-7.0#output-caching).
 
 ## Build Status
 
-[![Build Status](https://secure.travis-ci.org/etchuk/Etch.OrchardCore.OutputCache.png?branch=master)](http://travis-ci.org/etchuk/Etch.OrchardCore.OutputCache) [![NuGet](https://img.shields.io/nuget/v/Etch.OrchardCore.OutputCache.svg)](https://www.nuget.org/packages/Etch.OrchardCore.OutputCache)
+[![NuGet](https://img.shields.io/nuget/v/Etch.OrchardCore.OutputCache.svg)](https://www.nuget.org/packages/Etch.OrchardCore.OutputCache)
 
 ## Orchard Core Reference
 
@@ -18,7 +18,9 @@ Alternatively you can [download the source](https://github.com/etchuk/Etch.Orcha
 
 ## Usage
 
-_Add instructions on how to use module features._
+First step is to enable "Output caching" within the features section of the admin dashboard. Once enabled, any unauthorised requests to the tenant will cache the page using a memory store. To verify output cache is working, make multiple requests to a page and check the response header to see if an "age" is present.
+
+**Known issue is that output caching will not work when the Forms module is enabled.**
 
 ## Packaging
 
