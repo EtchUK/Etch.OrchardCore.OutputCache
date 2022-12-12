@@ -42,10 +42,15 @@ namespace Etch.OrchardCore.OutputCache.Redis
             );
         }
 
-        public async ValueTask<byte[]> GetAsync(string key, CancellationToken cancellationToken)
+        public ValueTask<byte[]> GetAsync(string key, CancellationToken cancellationToken)
         {
             ArgumentNullException.ThrowIfNull(key);
 
+            return GetInternalAsync(key);
+        }
+
+        private async ValueTask<byte[]> GetInternalAsync(string key)
+        {
             await ConnectAsync();
 
             var entry = await _redis.Database.StringGetAsync(new RedisKey(_prefix + key));
@@ -58,11 +63,16 @@ namespace Etch.OrchardCore.OutputCache.Redis
             return Encoding.Default.GetBytes(entry);
         }
 
-        public async ValueTask SetAsync(string key, byte[] value, string[] tags, TimeSpan validFor, CancellationToken cancellationToken)
+        public ValueTask SetAsync(string key, byte[] value, string[] tags, TimeSpan validFor, CancellationToken cancellationToken)
         {
             ArgumentNullException.ThrowIfNull(key);
             ArgumentNullException.ThrowIfNull(value);
 
+            return SetInternalAsync(key, value, tags, validFor);
+        }
+
+        private async ValueTask SetInternalAsync(string key, byte[] value, string[] tags, TimeSpan validFor)
+        {
             await ConnectAsync();
 
             await _redis.Database.StringSetAsync(new RedisKey(_prefix + key), new RedisValue(Encoding.Default.GetString(value)), validFor);
@@ -82,7 +92,6 @@ namespace Etch.OrchardCore.OutputCache.Redis
                 if (_redis.Database == null)
                 {
                     _logger.LogError($"Failed to connect to Redis for output caching.");
-                    return;
                 }
             }
         }
