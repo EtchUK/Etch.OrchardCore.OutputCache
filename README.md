@@ -38,4 +38,4 @@ When the module is compiled (using `dotnet build`) it's configured to generate a
 
 ## Notes
 
-This module was created using `v1.3.0` of [Etch.OrchardCore.OutputCache](https://github.com/EtchUK/Etch.OrchardCore.OutputCache) template.
+This module was created using `v1.3.0` of [Etch.OrchardCore.ModuleBoilerplate](https://github.com/EtchUK/Etch.OrchardCore.ModuleBoilerplate) template.
