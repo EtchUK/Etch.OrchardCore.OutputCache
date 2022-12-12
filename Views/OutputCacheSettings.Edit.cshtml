@@ -21,3 +21,7 @@
     <input asp-for="VaryByQueryStrings" class="form-control" />
     <span class="hint">@T["Comma separated query string parameters that vary the output cache entries."]</span>
 </div>
+
+<h2>@T["Purge"]</h2>
+
+<p><a asp-route="OutputCachePurge" asp-route-area="Etch.OrchardCore.OutputCache" class="btn btn-warning">@T["Purge Output Cache"]</a></p>
