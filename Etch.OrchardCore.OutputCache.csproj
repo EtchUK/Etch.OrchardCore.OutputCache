@@ -8,7 +8,7 @@
     <PackageId>Etch.OrchardCore.OutputCache</PackageId>
     <Title>Output Caching</Title>
     <Authors>Etch UK Ltd.</Authors>
-    <Description>Provides Output caching for Orchard Core.</Description>
+    <Description>Orchard Core module that provides caching using Output Cache.</Description>
     <PackageTags>orchardcore;etchuk</PackageTags>
   </PropertyGroup>
 
@@ -17,6 +17,7 @@
     <PackageReference Include="OrchardCore.DisplayManagement" Version="1.4.0" />
     <PackageReference Include="OrchardCore.ResourceManagement" Version="1.4.0" />
     <PackageReference Include="OrchardCore.Module.Targets" Version="1.4.0" />
+    <PackageReference Include="Preview.OutputCaching" Version="0.0.2-preview" />
   </ItemGroup>
 
   <ItemGroup>
