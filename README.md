@@ -18,13 +18,19 @@ Alternatively you can [download the source](https://github.com/etchuk/Etch.Orcha
 
 ## Usage
 
-First step is to enable "Output caching" within the features section of the admin dashboard. Once enabled, any unauthorised requests to the tenant will cache the page using a memory store. To verify output cache is working, make multiple requests to a page and check the response header to see if an "age" is present.
+First step is to enable "Output Caching" within the features section of the admin dashboard. Once enabled, any unauthorised requests to the tenant will cache the page using a memory store. To verify output cache is working, make multiple requests to a page and check the response header to see if an "age" is present.
 
 **Known issue is that output caching will not work when the Forms module is enabled.**
 
 ### Configuration
 
 By default entries added to Output Cache will expire after 10 minutes. This can be changed via the admin area by selecting "Configuration" then "Output Cache" in the admin menu. Within the settings view the expiration length can be configured and will cause the tenant to be reoloaded once the settings have been saved. From the settings the tag associated to entries can be managed as well as specifying which query strings should be a variation on the cache entry.
+
+### Redis
+
+When Orchard Core is running on a distributed environment it's recommended that the cache store is using an external source instead of using the default memory store. Orchard Core provides various [Redis integrations](https://docs.orchardcore.net/en/latest/docs/reference/modules/Redis/) out the box that are ideal for a distributed cache storage. To change the output cache store to use Redis, enable the "Redis Output Caching" feature. 
+
+**Redis must be configured otherwise the tenant will become inaccessible.**
 
 ## Packaging
 
