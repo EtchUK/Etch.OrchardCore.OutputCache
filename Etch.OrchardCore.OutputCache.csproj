@@ -4,7 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>0.1.0-alpha</Version>
+    <Version>0.1.1-alpha</Version>
     <PackageId>Etch.OrchardCore.OutputCache</PackageId>
     <Title>Output Caching</Title>
     <Authors>Etch UK Ltd.</Authors>
