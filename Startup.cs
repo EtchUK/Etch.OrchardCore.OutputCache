@@ -1,5 +1,6 @@
 using Etch.OrchardCore.OutputCache.Controllers;
 using Etch.OrchardCore.OutputCache.Drivers;
+using Etch.OrchardCore.OutputCache.Policies;
 using Etch.OrchardCore.OutputCache.Settings;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Routing;
@@ -38,14 +39,7 @@ namespace Etch.OrchardCore.OutputCache
 
                 options.DefaultExpirationTimeSpan = new TimeSpan(0, settings.Expiration, 0);
 
-                options.AddBasePolicy(build => {
-                    build.Tag(settings.Tag);
-
-                    if (settings.VaryByQueryStrings != null)
-                    {
-                        build.VaryByQuery(settings.VaryByQueryStrings);
-                    }
-                });
+                options.AddBasePolicy(new DefaultOrchardCorePolicy(settings));
             });
         }
 
