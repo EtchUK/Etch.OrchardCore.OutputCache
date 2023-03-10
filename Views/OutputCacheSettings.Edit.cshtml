@@ -22,6 +22,12 @@
     <span class="hint">@T["Comma separated query string parameters that vary the output cache entries."]</span>
 </div>
 
+<div class="mb-3">
+    <label asp-for="BypassCookies">@T["Bypass Cookies"]</label>
+    <input asp-for="BypassCookies" class="form-control" />
+    <span class="hint">@T["Comma separated of cookie names that if present should bypass cache."]</span>
+</div>
+
 <h2>@T["Purge"]</h2>
 
 <p><a asp-route="OutputCachePurge" asp-route-area="Etch.OrchardCore.OutputCache" class="btn btn-warning">@T["Purge Output Cache"]</a></p>
