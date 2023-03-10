@@ -25,6 +25,7 @@ namespace Etch.OrchardCore.OutputCache.Drivers
         {
             return Initialize<OutputCacheSettingsViewModel>("OutputCacheSettings_Edit", model =>
             {
+                model.BypassCookies = string.Join(", ", section.BypassCookies);
                 model.Expiration = section.Expiration;
                 model.Tag = section.Tag;
                 model.VaryByQueryStrings = string.Join(", ", section.VaryByQueryStrings);
@@ -43,8 +44,14 @@ namespace Etch.OrchardCore.OutputCache.Drivers
 
                 if (context.Updater.ModelState.IsValid)
                 {
+                    settings.BypassCookies = model.BypassCookies
+                        .Split(",", System.StringSplitOptions.RemoveEmptyEntries)
+                        .Select(x => x.Trim())
+                        .ToArray();
+
                     settings.Expiration = model.Expiration;
                     settings.Tag = model.Tag;
+
                     settings.VaryByQueryStrings = model.VaryByQueryStrings
                         .Split(",", System.StringSplitOptions.RemoveEmptyEntries)
                         .Select(x => x.Trim())

@@ -70,14 +70,18 @@ namespace Etch.OrchardCore.OutputCache.Policies
             return ValueTask.CompletedTask;
         }
 
-        private static bool AttemptOutputCaching(OutputCacheContext context)
+        private bool AttemptOutputCaching(OutputCacheContext context)
         {
             // Check if the current request fulfisls the requirements to be cached
-
             var request = context.HttpContext.Request;
 
             // Verify the method
             if (!HttpMethods.IsGet(request.Method) && !HttpMethods.IsHead(request.Method))
+            {
+                return false;
+            }
+
+            if (_settings.BypassCookies != null && request.Cookies.Any(x => _settings.BypassCookies.Any(c => c.Equals(x.Key, System.StringComparison.OrdinalIgnoreCase))))
             {
                 return false;
             }
