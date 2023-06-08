@@ -13,13 +13,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="OrchardCore.Admin" Version="1.4.0" />
-    <PackageReference Include="OrchardCore.ContentManagement" Version="1.4.0" />
-    <PackageReference Include="OrchardCore.DisplayManagement" Version="1.4.0" />
-    <PackageReference Include="OrchardCore.Navigation" Version="1.4.0" />
-    <PackageReference Include="OrchardCore.Redis.Abstractions" Version="1.4.0" />
-    <PackageReference Include="OrchardCore.ResourceManagement" Version="1.4.0" />
-    <PackageReference Include="OrchardCore.Module.Targets" Version="1.4.0" />
+    <PackageReference Include="OrchardCore.Admin" Version="1.6.0" />
+    <PackageReference Include="OrchardCore.ContentManagement" Version="1.6.0" />
+    <PackageReference Include="OrchardCore.DisplayManagement" Version="1.6.0" />
+    <PackageReference Include="OrchardCore.Navigation" Version="1.6.0" />
+    <PackageReference Include="OrchardCore.Redis.Abstractions" Version="1.6.0" />
+    <PackageReference Include="OrchardCore.ResourceManagement" Version="1.6.0" />
+    <PackageReference Include="OrchardCore.Module.Targets" Version="1.6.0" />
     <PackageReference Include="Preview.OutputCaching" Version="0.0.2-preview" />
   </ItemGroup>
 
