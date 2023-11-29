@@ -1,4 +1,4 @@
-﻿using Etch.OrchardCore.OutputCache.Settings;
+using Etch.OrchardCore.OutputCache.Settings;
 using Etch.OrchardCore.OutputCache.ViewModels;
 using OrchardCore.DisplayManagement.Entities;
 using OrchardCore.DisplayManagement.Handlers;
@@ -25,10 +25,10 @@ namespace Etch.OrchardCore.OutputCache.Drivers
         {
             return Initialize<OutputCacheSettingsViewModel>("OutputCacheSettings_Edit", model =>
             {
-                model.BypassCookies = string.Join(", ", section.BypassCookies);
+                model.BypassCookies = section.BypassCookies != null ? string.Join(", ", section.BypassCookies) : string.Empty;
                 model.Expiration = section.Expiration;
                 model.Tag = section.Tag;
-                model.VaryByQueryStrings = string.Join(", ", section.VaryByQueryStrings);
+                model.VaryByQueryStrings = section.VaryByQueryStrings != null ? string.Join(", ", section.VaryByQueryStrings) : string.Empty;
             })
             .Location("Content:5")
             .OnGroup(Constants.GroupId);
@@ -44,7 +44,7 @@ namespace Etch.OrchardCore.OutputCache.Drivers
 
                 if (context.Updater.ModelState.IsValid)
                 {
-                    settings.BypassCookies = model.BypassCookies
+                    settings.BypassCookies = model.BypassCookies?
                         .Split(",", System.StringSplitOptions.RemoveEmptyEntries)
                         .Select(x => x.Trim())
                         .ToArray();
@@ -52,7 +52,7 @@ namespace Etch.OrchardCore.OutputCache.Drivers
                     settings.Expiration = model.Expiration;
                     settings.Tag = model.Tag;
 
-                    settings.VaryByQueryStrings = model.VaryByQueryStrings
+                    settings.VaryByQueryStrings = model.VaryByQueryStrings?
                         .Split(",", System.StringSplitOptions.RemoveEmptyEntries)
                         .Select(x => x.Trim())
                         .ToArray();

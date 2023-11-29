@@ -1,4 +1,4 @@
-﻿using Azure;
+using Azure;
 using Etch.OrchardCore.OutputCache.Settings;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.OutputCaching;
@@ -29,7 +29,7 @@ namespace Etch.OrchardCore.OutputCache.Policies
             // Vary by any query by default
             context.CacheVaryByRules.QueryKeys = "*";
 
-            if (_settings.VaryByQueryStrings.Any())
+            if (_settings.VaryByQueryStrings?.Any() ?? false)
             {
                 context.CacheVaryByRules.QueryKeys = _settings.VaryByQueryStrings;
             }
