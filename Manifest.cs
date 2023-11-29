@@ -5,7 +5,7 @@ using OrchardCore.Modules.Manifest;
     Category = "Performance",
     Description = "Provides caching using Output Cache.",
     Name = "Output Caching",
-    Version = "0.3.0",
+    Version = "0.4.0",
     Website = "https://etchuk.com"
 )]
 
