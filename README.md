@@ -1,3 +1,7 @@
+> ⚠️ **Archived – No Longer Maintained**
+>
+> This repository is no longer maintained due to a change in the technologies used by our organisation. No further updates, fixes, or security patches will be provided. The project is archived to prevent the expectation of ongoing support. The code remains available as-is for reference or forking.
+
 # Etch.OrchardCore.OutputCache
 
 Orchard Core module that provides caching using [Output Cache](https://learn.microsoft.com/en-us/aspnet/core/performance/caching/overview?view=aspnetcore-7.0#output-caching).
@@ -39,3 +43,4 @@ When the module is compiled (using `dotnet build`) it's configured to generate a
 ## Notes
 
 This module was created using `v1.3.0` of [Etch.OrchardCore.ModuleBoilerplate](https://github.com/EtchUK/Etch.OrchardCore.ModuleBoilerplate) template.
+
